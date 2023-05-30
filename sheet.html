@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate PDF</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
+<form action="modify_sheet.php" method="post">
+  <h3>I. Personal Inforamation</h3>
+  <div style="display: flex; flex-wrap: wrap; align-items: center">
+    <br>
+    <input type="text" name="surname" placeholder="Surname">
+    <input type="text" name="firstname" placeholder="First Name">
+    <input type="text" name="middlename" placeholder="Middle Name">
+    <input type="text" name="extension" placeholder="Name Extension (Jr., Sr., etc.)">
+    <input type="date" name="birthdate">
+    <input type="text" name="birthplace" placeholder="Birthplace">
+    <input type="text" name="sex" placeholder="Sex">
+    <input type="text" name="civil_status" placeholder="Civil Status">
+    <input type="text" name="height" placeholder="Height (in cm)">
+    <input type="text" name="weight" placeholder="Weight (in kg)">
+    <input type="text" name="blood_type" placeholder="Blood Type">
+    <input type="text" name="GSIS" placeholder="GSIS No.">
+    <input type="text" name="PAGIBIG" placeholder="PAGIBIG No.">
+    <input type="text" name="PHILHEALTH" placeholder="PHILHEALTH No.">
+    <input type="text" name="SSS" placeholder="SSS No.">
+    <input type="text" name="TIN" placeholder="TIN No.">
+    <input type="text" name="agency" placeholder="Agency Employee No.">
+    <input type="text" name="citizenship" placeholder="Citizenship">
+    <input type="tel" name="tel" placeholder="Telephone Number">
+    <input type="tel" name="mobile" placeholder="Mobile Number">
+    <input type="email" name="email" placeholder="Email address">
+  </div>
+  <h4>Residential Address</h4>
+  <div style="display: flex; flex-wrap: wrap">
+      <input type="text" name="res_houseblocklot" placeholder="House/Block/Lot No.">
+      <input type="text" name="res_street" placeholder="Street">
+      <input type="text" name="res_subdivision" placeholder="Subdivision">
+      <input type="text" name="res_barangay" placeholder="Barangay">
+      <input type="text" name="res_city" placeholder="City/Municipality">
+      <input type="text" name="res_province" placeholder="Province">
+      <input type="text" name="res_zip" placeholder="ZIP Code">
+  </div>
+  <h4>Permanent Address</h4>
+  <div style="display: flex; flex-wrap: wrap">
+    <input type="text" name="perm_houseblocklot" placeholder="House/Block/Lot No.">
+    <input type="text" name="perm_street" placeholder="Street">
+    <input type="text" name="perm_subdivision" placeholder="Subdivision">
+    <input type="text" name="perm_barangay" placeholder="Barangay">
+    <input type="text" name="perm_city" placeholder="City/Municipality">
+    <input type="text" name="perm_province" placeholder="Province">
+    <input type="number" name="perm_zip" placeholder="ZIP Code">
+  </div>
+  <br>
+  <button type="submit">Submit</button>
+
+</form>
+</body>
+</html>

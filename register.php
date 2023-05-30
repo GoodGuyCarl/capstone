@@ -1,5 +1,4 @@
-<?php
-include ('inc.connection.php');
+<?php include ('inc.connection.php');
 // Check if the form has been submitted
 if (isset($_POST['email']) && isset($_POST['password'])) {
 
@@ -15,14 +14,12 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         echo "The email address already exists.";
     } else {
 
-
         // Hash the password with the salt
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         // Insert the user into the database
         $sql = "INSERT INTO login (email, password, is_active) VALUES ('$email', '$hashed_password', 0)";
         $db->query($sql);
-        echo "You have successfully registered. An email has been sent to your address with a link to activate your account.";
     }
 
 } else {
