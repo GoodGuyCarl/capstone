@@ -2,11 +2,6 @@
 session_start(); // Start session
 include('inc.connection.php'); // Include database connection file
 
-if($_POST['email'] == null || $_POST['password'] == null) {
-    header('Location: index.php');
-    die();
-}
-
 $email = $_POST['email'];
 $password = $_POST['password'];
 
@@ -25,7 +20,8 @@ if($query->rowCount() > 0) {
     if (password_verify($password, $hashed_password)) {
         // The password is correct, so log the user in.
         $_SESSION['success_message'] = 'User logged in successfully';
-        header('Location: tracker.php');
+        $_SESSION['logged_in'] = true;
+        header('Location: sheet.php');
     } else {
         // The password is incorrect, so show an error message.
         $_SESSION['incorrect'] = "Password incorrect";

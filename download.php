@@ -1,18 +1,28 @@
-<?php session_start();
+<?php
+session_start();
 include('inc.connection.php');
+
 // Get the file name from the URL
 $filename = $_GET["file"];
 
 // Get the file data from the database
-$sql = "SELECT resume FROM resumes WHERE resume = '$filename'";
-$result = $db->query($sql);
-$row = $result->fetch();
-$file_data = $row["resume"];
+$sql = "SELECT file_name FROM pds WHERE file_name = :filename";
+$stmt = $db->prepare($sql);
+$stmt->bindParam(':filename', $filename);
+$stmt->execute();
+$row = $stmt->fetch();
 
-// Set the headers
-header("Content-Type: application/octet-stream");
-header("Content-Disposition: attachment; filename=$filename");
-header("Content-Length: " . filesize($file_data));
+$file_data = 'uploads/' . $row["file_name"];
 
-// Output the file data
-readfile($file_data);
+if (file_exists($file_data)) {
+    // Set the headers
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header("Content-Disposition: attachment;filename=$filename");
+    header('Cache-Control: max-age=0');
+
+    // Output the file data
+    readfile($file_data);
+} else {
+    echo 'File not found';
+}
+exit;

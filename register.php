@@ -20,6 +20,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         // Insert the user into the database
         $sql = "INSERT INTO login (email, password, is_active) VALUES ('$email', '$hashed_password', 0)";
         $db->query($sql);
+        $_SESSION['register_success'] = 'Successfully registered your account.';
+        header('Location: index.php');
     }
 
 } else {

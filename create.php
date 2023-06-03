@@ -7,11 +7,11 @@ $email = $_POST['email'];
 $phone = $_POST['phone'];
 
 // Check if a file was uploaded successfully
-if ($_FILES['resume']['error'] === UPLOAD_ERR_OK) {
-    $fileTmpPath = $_FILES['resume']['tmp_name'];
-    $fileName = $_FILES['resume']['name'];
-    $fileSize = $_FILES['resume']['size'];
-    $fileType = $_FILES['resume']['type'];
+if ($_GET['file']['error'] === UPLOAD_ERR_OK) {
+    $fileTmpPath = $_FILES['file']['tmp_name'];
+    $fileName = $_FILES['file']['name'];
+    $fileSize = $_FILES['file']['size'];
+    $fileType = $_FILES['file']['type'];
 
     // Specify the directory where you want to store the uploaded files
     $targetDirectory = 'uploads/';
@@ -31,12 +31,9 @@ if ($_FILES['resume']['error'] === UPLOAD_ERR_OK) {
     echo "Error uploading the file.";
 }
 
-$sql = 'INSERT INTO resumes (name, email, phone, resume, date_submitted) VALUES (:name, :email, :phone, :resume, NOW())';
+$sql = 'INSERT INTO pds (file_name) VALUES (:filename)';
 $query = $db->prepare($sql);
-$query->bindParam(':name', $name);
-$query->bindParam(':email', $email);
-$query->bindParam(':phone', $phone);
-$query->bindParam(':resume', $resumeReference);
+$query->bindParam(':filename', $fileReference);
 $query->execute();
 
 
