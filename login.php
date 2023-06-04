@@ -24,10 +24,11 @@ if($query->rowCount() > 0) {
         header('Location: sheet.php');
     } else {
         // The password is incorrect, so show an error message.
-        $_SESSION['incorrect'] = "Password incorrect";
+        $_SESSION['incorrect_login'] = "<div class='mt-2 alert alert-primary' role='alert'>Incorrect login details</div>";
         header('Location: index.php');
     }
     die();
 } else {
-    echo 'No records found';
+    $_SESSION['incorrect_login'] = "<div class='mt-2 alert alert-primary' role='alert'>Server down.</div>";
+    header('Location: index.php');
 }

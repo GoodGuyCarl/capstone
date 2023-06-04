@@ -32,27 +32,28 @@ if ($query->rowCount() == 0) {
     }
 }
 else {
-    echo '<table style="max-height: 75vh; overflow-y: scroll">
-        <thead>
-            <tr>
-                <th style="text-align: center;">Name</th>
-                <th style="text-align: center;">File</th>
-                <th style="text-align: center;">City</th>
-                <th style="text-align: center;">Province</th>
-                <th style="text-align: center;">Actions</th>
-            </tr>
-        </thead>
-        <tbody>';
+    echo '<div class="table-responsive">
+        <table class="table table-hover" style="max-height: 75vh; overflow-y: scroll">
+            <thead class="thead-dark">
+                <tr>
+                    <th style="text-align: center;">Name</th>
+                    <th style="text-align: center;">File</th>
+                    <th style="text-align: center;">City</th>
+                    <th style="text-align: center;">Province</th>
+                    <th style="text-align: center;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>';
     foreach ($rows as $row) {
         echo '<tr>';
         echo '<td style="text-align: center;">'. $row['firstname'] .' ' . $row['surname'] . '</td>';
         echo '<td style="text-align: center;"><a href="download.php?file=' . $row['file_name'] . '">' . $row['file_name'] . '</a></td>';
         echo '<td style="text-align: center;">' . $row['res_city'] . '</td>';
         echo '<td style="text-align: center;">' . $row['res_province'] . '</td>';
-        echo '<td style="text-align: center;"><a id="edit_link" href="edit.php?id='. $row['id'] . '">Edit</a><span> / </span><a href="delete.php?id=' . $row['id'] . '">Delete</a></td>';
+        echo '<td style="text-align: center;"><a id="edit_link" href="edit.php?id='. $row['id'] . '" class="btn btn-primary mr-1">Edit</a><a href="delete.php?id=' . $row['id'] . '" class="btn btn-danger ml-1">Delete</a></td>';
         echo '</tr>';
     }
     echo '</tbody>';
-    echo '</table>';
-
+    echo '</table>
+    </div>';
 }
